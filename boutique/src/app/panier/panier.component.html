@@ -1,0 +1,27 @@
+<h2>Mon panier</h2>
+
+ <table *ngIf="produits.length > 0" style="width:50%">
+<tr>
+      <th>Products</th>
+      <th>Quantity</th>
+      <th>Prix unitaire</th>
+      <th>Prix total</th>
+
+ </tr>
+  <tr *ngFor="let produit of produits; index as i">
+    <td>{{produit.name}}</td>
+    <td>{{produit.quantity}}</td>
+    <td>
+    	<div class="button_cont" align="center"><a class="example_a" target="_blank" rel="nofollow noopener">{{produit.price}}€</a></div>
+    </td>
+    <td>
+    	<div class="button_cont" align="center"><a class="example_a" target="_blank" rel="nofollow noopener">{{produit.price * produit.quantity}}{{increment(produit.price * produit.quantity)}}€</a></div>
+    </td>
+  </tr>
+  <tr>
+  	<td style="font-weight: bold;font-size: 20px" colspan="2">Prix total : </td>
+  	<td style="text-align:right;" colspan="2"><div class="button_cont" ><a class="example_a" target="_blank" rel="nofollow noopener">{{this.getTotalPrice()}} €</a></div>
+</td>
+</table>
+ <button *ngIf="produits.length > 0" (click)="this.deletePanier()" type="button">Valider la commande</button> 
+<h2 *ngIf="produits.length == 0">Rien dans le panier ! :/ </h2>

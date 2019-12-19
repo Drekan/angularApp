@@ -1,0 +1,33 @@
+<header class="hd">
+
+<h1 class="h1">{{title}}</h1>
+<h3 class="h3">{{description}}</h3>
+
+
+<!--<a (click)="this.router.navigate(['/'])" class="tabcontent">Homepage</a>-->
+<a (click)="this.router.navigate(['/produits'])" class="tabcontent">Catalogue</a>
+<a *ngIf="!this.auth.isConnected()" (click)="this.router.navigate(['/login'])" class="tabcontent">Connexion</a>
+<a *ngIf="!this.auth.isConnected()" (click)="this.router.navigate(['/register'])" class="tabcontent">Inscription</a>
+
+<a *ngIf="this.auth.isConnected()" (click)="this.router.navigate(['/panier'])" class="lastcontent">Mon panier</a>
+
+<a style="background-color: #DC143C" *ngIf="this.auth.isConnected()" (click)="this.auth.deconnexion()" class="lastcontent">Déconnexion</a>
+<a style="background: none"*ngIf="this.auth.isConnected()" class="lastcontent">Joyeux Noël à vous, {{this.auth.getCurrentUser().pseudo}}</a>
+<!-- faire bouttons onclick pour chargement dynamique -->
+</header>
+
+<br>
+
+<!--
+<div class="test">H</div>
+<div class="test">O</div>
+<div class="test">M</div>
+<div class="test">E</div>
+<div class="test">P</div>
+<div class="test">A</div>
+<div class="test">G</div>
+<div class="test">E</div>-->
+<router-outlet></router-outlet>
+<!--<app-produits></app-produits>-->
+
+
